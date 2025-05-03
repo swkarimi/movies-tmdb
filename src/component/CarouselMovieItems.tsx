@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { MovieType } from "@/types/types"
 import { FC } from "react"
+import { image_base_url } from "@/libs/constant"
 
 type CarouselProps = {
   movies: MovieType[]
@@ -20,7 +21,7 @@ export const CarouselMovieItems: FC<CarouselProps> = ({
   slideConfig = {},
 }) => {
   const {
-    height = "320px",
+    height = "375px",
     borderRadius = "0",
     slideToContainerRatio = "100%",
     gap = "0px",
@@ -40,10 +41,10 @@ export const CarouselMovieItems: FC<CarouselProps> = ({
           }}
         >
           <Image
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            src={`${image_base_url}${movie.poster_path}`}
             fill
             alt={movie.title}
-            className="object-cover"
+            className="object-cover border border-black"
             style={{ borderRadius }}
             unoptimized
             priority

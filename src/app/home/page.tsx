@@ -10,10 +10,11 @@ export default async function HomePage() {
 
   return (
     <div>
-      <CarouselWrapper>
+      <h3>Playing Now</h3>
+      <CarouselWrapper carouselConfig={{borderRadius:"8px"}}>
         <CarouselMovieItems
           movies={nowPlayingMovies.results}
-          slideConfig={{ slideToContainerRatio: "25%", height:"300px" }}
+          slideConfig={{ slideToContainerRatio: "20%", height:"100%", borderRadius:"8px", gap:"4px" }}
         />
       </CarouselWrapper>
     </div>
