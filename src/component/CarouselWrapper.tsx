@@ -26,12 +26,12 @@ export const CarouselWrapper: FC<CarouselWrapperProps> = ({
     align = "start",
     loop = false,
     className = "", //max-w-5xl w-11/12 mx-auto
-    borderRadius = "0px",
+    borderRadius = "8px",
   } = carouselConfig
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop, align, slidesToScroll: 1 },
-    [Autoplay({ delay })]
+    [Autoplay({ delay, stopOnInteraction: false })]
   )
 
   const handlePrevButton = () => {
@@ -52,16 +52,16 @@ export const CarouselWrapper: FC<CarouselWrapperProps> = ({
     >
       <div className={`flex`}>{children}</div>
       <button
-        className="absolute top-1/2 -translate-y-1/2 left-0"
+        className="absolute top-1/2 -translate-y-1/2 left-1 bg-white opacity-50 rounded-full hover:opacity-70 duration-300"
         onClick={handlePrevButton}
       >
-        <ChevronLeftIcon className="size-10 opacity-20 hover:opacity-80 duration-300" />
+        <ChevronLeftIcon className="size-10 opacity-50 hover:opacity-70 duration-300" />
       </button>
       <button
-        className="absolute top-1/2 -translate-y-1/2 right-0"
+        className="absolute top-1/2 -translate-y-1/2 right-1 bg-white opacity-50 rounded-full hover:opacity-70 duration-300"
         onClick={handleNextButton}
       >
-        <ChevronRightIcon className="size-10 opacity-20 hover:opacity-80 duration-300" />
+        <ChevronRightIcon className="size-10 opacity-50 hover:opacity-70 duration-300" />
       </button>
     </div>
   )

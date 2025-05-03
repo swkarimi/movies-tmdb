@@ -9,10 +9,10 @@ import { image_base_url } from "@/libs/constant"
 type CarouselProps = {
   movies: MovieType[]
   slideConfig?: {
-    height?: string
+    slideHeight?: string
     borderRadius?: string
     gap?: string
-    slideToContainerRatio?: string
+    slideWidth?: string
   }
 }
 
@@ -21,10 +21,10 @@ export const CarouselMovieItems: FC<CarouselProps> = ({
   slideConfig = {},
 }) => {
   const {
-    height = "375px",
-    borderRadius = "0",
-    slideToContainerRatio = "100%",
-    gap = "0px",
+    slideHeight = "300px",
+    borderRadius = "8px",
+    slideWidth = "200px", // 50% half of carousel
+    gap = "4px",
   } = slideConfig
 
   return (
@@ -35,22 +35,20 @@ export const CarouselMovieItems: FC<CarouselProps> = ({
           className={`relative shrink-0 grow-0 w-full`}
           style={{
             borderRadius,
-            flexBasis: slideToContainerRatio,
+            flexBasis: slideWidth,
             marginInlineStart: gap,
-            height,
+            height:slideHeight,
           }}
         >
           <Image
             src={`${image_base_url}${movie.poster_path}`}
             fill
             alt={movie.title}
-            className="object-cover border border-black"
+            className="object-cover"
             style={{ borderRadius }}
-            unoptimized
-            priority
           />
-          <h2 className="absolute bottom-0 left-0 right-0 bg-white/40 text-gray-900 p-4 text-xl font-semibold">
-            <Link href={`/movie/${movie.id}`}>{movie.title}</Link>
+          <h2 className="absolute bottom-0 left-0 right-0 bg-white/50 text-gray-900 p-2 font-semibold">
+            <Link className="line-clamp-1" href={`/movie/${movie.id}`}>{movie.title}</Link>
           </h2>
         </div>
       ))}
