@@ -52,13 +52,13 @@ export const CarouselWrapper: FC<CarouselWrapperProps> = ({
     >
       <div className={`flex`}>{children}</div>
       <button
-        className="absolute top-1/2 -translate-y-1/2 left-1 bg-white opacity-50 rounded-full hover:opacity-70 duration-300"
+        className="absolute top-1/2 -translate-y-1/2 left-1 bg-white opacity-50 rounded-full outline-0 hover:opacity-70 duration-300"
         onClick={handlePrevButton}
       >
         <ChevronLeftIcon className="size-10 opacity-50 hover:opacity-70 duration-300" />
       </button>
       <button
-        className="absolute top-1/2 -translate-y-1/2 right-1 bg-white opacity-50 rounded-full hover:opacity-70 duration-300"
+        className="absolute top-1/2 -translate-y-1/2 right-1 bg-white opacity-50 rounded-full outline-0 hover:opacity-70 duration-300"
         onClick={handleNextButton}
       >
         <ChevronRightIcon className="size-10 opacity-50 hover:opacity-70 duration-300" />
