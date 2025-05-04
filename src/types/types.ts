@@ -1,4 +1,4 @@
-export type ResultFetchType = {
+export type ResultFetchMovieType = {
   page: number
   results: MovieType[]
   total_pages: number

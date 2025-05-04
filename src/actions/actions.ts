@@ -1,5 +1,6 @@
+import { ApiResponse } from "@/libs/ApiResponse"
 import { base_url } from "@/libs/constant"
-import { ListMovieType } from "@/types/types"
+import { ListMovieType, ResultFetchMovieType } from "@/types/types"
 
 export const fetchMovies = async (list: ListMovieType, page?: number) => {
   const p = page || 1
@@ -13,6 +14,20 @@ export const fetchMovies = async (list: ListMovieType, page?: number) => {
     },
   }
 
-  const res = await fetch(url, options)
-  return await res.json()
+  try {
+    const res = await fetch(url, options)
+    if (!res.ok) {
+      const errorData = await res.json()
+      return ApiResponse.error<ResultFetchMovieType>(
+        `Error ${res.status}: ${errorData.status_message || res.statusText}`
+      )
+    }
+
+    const data = await res.json()
+    return ApiResponse.success<ResultFetchMovieType>(data)
+  } catch (error) {
+    return ApiResponse.error<ResultFetchMovieType>(
+      error instanceof Error ? error.message : "Unknown error"
+    )
+  }
 }

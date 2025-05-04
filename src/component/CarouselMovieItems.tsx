@@ -4,7 +4,7 @@ import Image from "next/image"
 import { MovieType } from "@/types/types"
 import { FC } from "react"
 import { image_base_url } from "@/libs/constant"
-import { convertDate } from "@/libs/function"
+import { convertDate } from "@/libs/libs"
 
 type CarouselProps = {
   movies: MovieType[]
@@ -36,7 +36,8 @@ export const CarouselMovieItems: FC<CarouselProps> = ({
           style={{
             borderRadius,
             flexBasis: slideWidth,
-            marginInlineStart: gap,
+            // marginInlineStart: gap,
+            marginInlineEnd: gap,
             height: slideHeight,
           }}
         >
